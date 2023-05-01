@@ -87,6 +87,31 @@ function doSomething(path) {
       return;
     }
 
-    
+    try {
+
+      content = normalize(content);
+      getHash(content, (err, hash) => {
+        if (err != null) {
+          console.error(err);
+          return;
+        }
+
+        fetch('/foo?${hash}', (err, data) => {
+          if (err != null) {
+            console.error(err);
+            return;
+          }
+
+          writeFile(path, data, (err) => {
+            if (err != null) {
+              console.error(err);
+            }
+          });
+        })
+      });
+
+    } catch (error) {
+      console.error(error);
+    }
   })
 }
