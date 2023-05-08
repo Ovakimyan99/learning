@@ -8,6 +8,8 @@
 - CallbackHell
 - Promise Api
 
+2. Regular Expression
+
 ---
 Предстоит написать:
 #### Исключения и ошибки
